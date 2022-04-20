@@ -1,0 +1,260 @@
+#content{
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 3px black;
+    padding-top: 10%;
+  }
+  
+  body {
+    background: lightgray;
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  hr{
+    width 400px;
+    border-top: 1px solid antiquewhite;
+    border-bottom: 1px solid antiquewhite;
+  }
+  
+  .nobull {
+    list-style-type: none;
+  }
+
+  #container {
+    width: 1280px;
+    margin: 20 auto;
+    background-color: white;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    font-size: 0.9rem;
+    border-spacing: 20px;
+}
+
+td, th {
+    padding: 5px;
+    border: 2px solid black;
+    text-align: left;
+}
+
+.delete {
+    border: 0;
+    text-align: center;
+}
+
+.update {
+    border: 0;
+}
+
+.add {
+    width: 11%;
+    border: 0;
+    text-align: left;
+    padding-left: 10px;
+}
+.delEvent {
+    width: 13%;
+    border: 0;
+    text-align: left;
+}
+
+#add {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+#search {
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.attribute {
+    margin-bottom: 20px;
+}
+
+.attribute label {
+    width: 440px;
+    display: inline-block;
+    text-align: right;
+}
+
+.attribute input[type="text"] {
+    width: 30%;
+}
+
+#save {
+    margin: 0 auto;
+    display: block;
+}
+
+label {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+
+
+
+#container {
+    width: 1280px;
+    margin: 0 auto;
+    background-color: lightgray;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.data-row {
+    background-color: pink;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.delete, .update {
+    border: 0;
+}
+
+#add {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+#search {
+    border: 1px solid black;
+}
+
+.attribute {
+    margin-bottom: 20px;
+}
+
+.attribute label {
+    width: 440px;
+    display: inline-block;
+    text-align: right;
+}
+
+.attribute input[type="text"] {
+    width: 30%;
+}
+
+#save {
+    margin: 0 auto;
+    display: block;
+}
+
+.add-tags {
+    display: block;
+    margin-left: 445px;
+    width: 100px;
+    margin-bottom: 5px;
+}
+
+#duration-attribute {
+    margin-bottom: 15px;
+}
+
+.tag-attribute {
+    margin-bottom: 5px;
+}
+
+.tag-attribute label {
+    vertical-align: top;
+}
+
+.tags {
+    background-color: white;
+    width: 390px;
+    display: inline-block;
+    min-height: 20px;
+}
+
+.tag {
+    display: inline-block;
+    text-align: center;
+    background-color: grey;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    font-size: 0.8rem;
+    border-radius: 2px;
+}
+
+.remove-product {
+    font-size: 0.5rem;
+}
+
+.add-list {
+    margin-left: 440px;
+}
+
+.state{
+    fill: none;
+    stroke: #a9a9a9;
+    stroke-width: 1;
+}
+.state:hover{
+    fill-opacity:0.5;
+}
+#tooltip {   
+    position: absolute;           
+    text-align: center;
+    padding: 20px;             
+    margin: 10px;
+    font: 12px sans-serif;        
+    background: lightsteelblue;   
+    border: 1px;      
+    border-radius: 2px;           
+    pointer-events: none;         
+}
+#tooltip h4{
+    margin:0;
+    font-size:14px;
+}
+#tooltip{
+    background:rgba(0,0,0,0.9);
+    border:1px solid grey;
+    border-radius:5px;
+    font-size:12px;
+    width:auto;
+    padding:4px;
+    color:white;
+    opacity:0;
+}
+#tooltip table{
+    table-layout:fixed;
+}
+#tooltip tr td{
+    padding:0;
+    margin:0;
+}
+#tooltip tr td:nth-child(1){
+    width:50px;
+}
+#tooltip tr td:nth-child(2){
+    text-align:center;
+}
