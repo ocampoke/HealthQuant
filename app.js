@@ -20,6 +20,9 @@ app.get('/locations',function(req,res){
   res.render('locations.handlebars') 
 });
 
+app.get('/hospitals',function(req,res){
+  res.render('hospitals.handlebars') 
+});
 
 app.listen(app.get('port'), function(){
 	console.log('Express started on port ' + app.get('port') + '; press Ctrl-C to terminate.');
