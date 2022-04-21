@@ -44,6 +44,16 @@ table {
     border-spacing: 20px;
 }
 
+.search-form{
+    border-collapse: collapse;
+    width: 30%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.9rem;
+    border-spacing: 20px;
+}
+
 td, th {
     padding: 5px;
     border: 2px solid black;
