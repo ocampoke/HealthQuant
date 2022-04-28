@@ -6,11 +6,14 @@
 var express = require("express");
 var app = express();
 var handlebars = require("express-handlebars").create({defaultLayout: "main"});
+// var cors = require('cors');
 
 app.engine("handlebars", handlebars.engine);
 app.set("view engine", "handlebars");
 app.set("port", 3129);
 app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/js'));
+// app.use(cors())
 
 app.get('/',function(req,res){
   res.render('home.handlebars') 
