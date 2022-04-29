@@ -18,7 +18,7 @@
 		throw new Error(errorMessage);
 	}
 
-	return response;
+	return response.json();
 }
 
 async function handleFormSubmit(event) {
