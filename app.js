@@ -20,6 +20,14 @@ app.get('/locations',function(req,res){
   res.render('locations.handlebars') 
 });
 
+app.get('/diseases',function(req,res){
+  res.render('diseases.handlebars') 
+});
+
+app.get('/treatments',function(req,res){
+  res.render('treatments.handlebars') 
+});
+
 app.get('/hospitals',function(req,res){
   res.render('hospitals.handlebars') 
 });

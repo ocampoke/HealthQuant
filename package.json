@@ -2,7 +2,7 @@
   "name": "HealthQuant",
   "version": "1.0.0",
   "main": "app.js",
-  "author": "Team EH",
+  "author": "Team KH",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.16.1",
