@@ -21,6 +21,37 @@
 	return response.json();
 }
 
+function clearContent(elementID) {
+	document.getElementById(elementID).innerHTML = "";
+}
+
+function setResultStyle(){
+	var myEles = document.getElementById('results');
+	for(var i=0; i<myEles.length; i++){
+	         myEles[i].setAttribute('class', "results");
+	    }
+	}
+
+
+function printResults(results) {
+	clearContent("results");
+	var mainContainer = document.getElementById("results");
+	var tr = document.createElement("tr");
+	tr.innerHTML = '<td style=\"border: 2px solid black;\"><b>Hospital Name</b></td>';
+	mainContainer.appendChild(tr);
+
+	for (var i = 0; i < results.length; i++) {
+	  var tr = document.createElement("tr");
+	  tr.innerHTML = '<td style=\"border: 2px solid black;\">' + results[i].name + '</td>';
+	  tr.setAttribute('border', '2');
+	  mainContainer.appendChild(tr);
+	}
+
+
+}
+
+
+
 async function handleFormSubmit(event) {
 	/**
 	 * This prevents the default behaviour of the browser submitting
@@ -53,16 +84,25 @@ async function handleFormSubmit(event) {
 		 * We'll define the `postFormDataAsJson()` function in the next step.
 		 */
 		const responseData = await postFormData({ url, formData });
-
+		if (formData.get('pedStatus') == 'Y'){
+			var result = responseData.filter(obj=> obj.children_hospital_f == "Y");
+		} else {
+			var result = responseData.filter(obj=> obj.children_hospital_f == "N");
+		}
+		
 		/**
 		 * Normally you'd want to do something with the response data,
 		 * but for this example we'll just log it to the console.
 		 */
-		console.log({ responseData });
+		console.log({ result });
 
 	} catch (error) {
 		console.error(error);
 	}
+	printResults(result);
+	document.getElementById("results").style.border = "2px solid #000000";
+
+	
 }
     const stateForm = document.getElementById("state-form");
     stateForm.addEventListener("submit", handleFormSubmit);
