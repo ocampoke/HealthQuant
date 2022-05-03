@@ -10,7 +10,7 @@ const cors = require('cors');
 
 app.engine("handlebars", handlebars.engine);
 app.set("view engine", "handlebars");
-app.set("port", 3129);
+app.set("port", 3029);
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/js'));
 app.use(cors())
@@ -34,6 +34,11 @@ app.get('/treatments',function(req,res){
 app.get('/hospitals',function(req,res){
   res.render('hospitals.handlebars') 
 });
+
+app.get('/showTreatments',function(req,res){
+  res.render('showTreatments.handlebars') 
+});
+
 
 app.listen(app.get('port'), function(){
 	console.log('Express started on port ' + app.get('port') + '; press Ctrl-C to terminate.');
