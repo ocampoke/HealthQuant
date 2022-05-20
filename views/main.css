@@ -54,6 +54,18 @@ table {
     border-spacing: 20px;
 }
 
+div.settings {
+    display:grid;
+    grid-template-columns: max-content max-content;
+    grid-gap:5px;
+}
+div.settings label       { text-align:right; }
+div.settings label:after { content: ":"; }
+div.settings input {
+    margin-left: 100%;
+    margin-right: auto;
+}
+
 .results{
     border-collapse: collapse;
     width: 30%;
