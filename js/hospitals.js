@@ -34,7 +34,8 @@ function printResults(results) {
 	<td style=\"border: 2px solid black;\"><b>Religious</b></td>\
 	<td style=\"border: 2px solid black;\"><b>Urban</b></td>\
 	<td style=\"border: 2px solid black;\"><b>Bed Count</b></td>\
-	<td style=\"border: 2px solid black;\"><b>Zip Code</b></td>';
+	<td style=\"border: 2px solid black;\"><b>Zip Code</b></td>\
+	<td style=\"border: 2px solid black;\"><b>Street Address</b></td>';
 	mainContainer.appendChild(tr);
 
 	// For loop to print each of the hospitals returned in the JSON response from the API
@@ -45,7 +46,8 @@ function printResults(results) {
 	  <td style=\"border: 2px solid black;\">' + results[i].chrch_affl_f + '</td>\
 	  <td style=\"border: 2px solid black;\">' + results[i].urban_location_f + '</td>\
 	  <td style=\"border: 2px solid black;\">' + results[i].hospital_bed_count + '</td>\
-	  <td style=\"border: 2px solid black;\">' + results[i].zip_code + '</td>';
+	  <td style=\"border: 2px solid black;\">' + results[i].zip_code + '</td>\
+	  <td style=\"border: 2px solid black;\">' + results[i].street_address + '</td>';
 	  tr.setAttribute('border', '2');
 	  mainContainer.appendChild(tr);
 	}

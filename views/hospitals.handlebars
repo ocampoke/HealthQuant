@@ -17,12 +17,12 @@
   <table class="search-form">
     <tr>
       <td>
-        <form action="https://salty-ravine-28400.herokuapp.com/http://www.communitybenefitinsight.org/api/get_hospitals.php?" style="text-align: left; " id="state-form">
+        <form action="https://obscure-chamber-90616.herokuapp.com/http://www.communitybenefitinsight.org/api/get_hospitals.php?" style="text-align: left; " id="state-form">
               
               <div class="settings">
               
               <label for="state">State</label>
-              <select name="state" id="state">
+              <select name="state" id="state" class="form-control">
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -77,30 +77,30 @@
               
         
               <label for="pedStatus">Pediatric</label>
-              <select name="pedStatus" id="pedStatus">
+              <select name="pedStatus" id="pedStatus" class="form-control">
                 <option value="Y">Yes</option> 
                 <option value="N">No</option> 
               </select>
  
               <label for="relStatus">Religious</label>              
-              <select name="relStatus" id="relStatus">
+              <select name="relStatus" id="relStatus" class="form-control">
                 <option value="Y">Yes</option> 
                 <option value="N">No</option> 
               </select>
 
               <label for="urbStatus">Urban</label>              
-              <select name="urbStatus" id="urbStatus">
+              <select name="urbStatus" id="urbStatus" class="form-control">
                 <option value="Y">Yes</option> 
                 <option value="N">No</option> 
               </select>
 
               <label for="bedCount">Bed Count</label>              
-              <select name="bedCount" id="bedCount">
+              <select name="bedCount" id="bedCount" class="form-control">
                 <option value="lessThanHundred">Less than 100</option> 
                 <option value="hundredToTwoNinetyNine">100 - 299</option>
                 <option value="threeHundredOrMore">More than 299</option> 
               </select>
-              <input type="submit" value="Submit" />
+              <input type="submit" class="btn btn-info" value="Submit" />
               
               </div>
         </form>
@@ -108,6 +108,6 @@
     </tr>
   </table>
 
-  <table id="results" class="results"></table>
+  <table id="results" class="table table-light table-striped results"></table>
 
 </body>

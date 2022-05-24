@@ -45,9 +45,10 @@ table {
 }
 
 .search-form{
+    border-width: 0;
     border-collapse: collapse;
-    width: 30%;
-    text-align: left;
+    width: auto;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     font-size: 0.9rem;
@@ -59,8 +60,8 @@ div.settings {
     grid-template-columns: max-content max-content;
     grid-gap:5px;
 }
-div.settings label       { text-align:right; }
-div.settings label:after { content: ":"; }
+div.settings label       { text-align:right; font-size: 16px; margin: 10px 0px;}
+div.settings label:after { content: " "; }
 div.settings input {
     margin-left: 100%;
     margin-right: auto;
@@ -68,17 +69,17 @@ div.settings input {
 
 .results{
     border-collapse: collapse;
-    width: 30%;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
+    width: 30% !important; 
+    text-align: left !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     font-size: 0.9rem;
     border-spacing: 20px;
 }
 
 td, th {
     padding: 5px;
-    border: 2px solid black;
+    border: 0px solid black;
     text-align: left;
 }
 
