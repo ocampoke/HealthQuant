@@ -1,16 +1,11 @@
 // hospitals.js
-/**
- * Helper function for POSTing data as JSON with fetch.
- *
- * @param {Object} options
- * @param {string} options.url - URL to POST data to
- * @param {FormData} options.formData - `FormData` instance
- * @return {Object} - Response body from URL that was POSTed to
- */
- async function postFormData({ url, formData }) {
+// Function to send query to the Community Benefit Insight API
+// Adapted code from https://simonplend.com/how-to-use-fetch-to-post-form-data-as-json-to-your-api/
+async function postFormData({ url, formData }) {
 	const plainFormData = Object.fromEntries(formData.entries());
     console.log(plainFormData);
 
+	// Use fetch to send the form data to the API
 	const response = await fetch(url + new URLSearchParams(plainFormData));
 
 	if (!response.ok) {
@@ -18,31 +13,39 @@
 		throw new Error(errorMessage);
 	}
 
+	// Return search result API data
 	return response.json();
 }
 
+// Function to clear contents of passed elementID. 
 function clearContent(elementID) {
 	document.getElementById(elementID).innerHTML = "";
 }
 
-function setResultStyle(){
-	var myEles = document.getElementById('results');
-	for(var i=0; i<myEles.length; i++){
-	         myEles[i].setAttribute('class', "results");
-	    }
-	}
 
-
+// Function to print search results to Hospital page. Adapted from https://howtocreateapps.com/fetch-and-display-json-html-javascript/
 function printResults(results) {
+	// Clear contents of results page in the Hospitals page to allow the printing the results of new search queries
 	clearContent("results");
 	var mainContainer = document.getElementById("results");
 	var tr = document.createElement("tr");
-	tr.innerHTML = '<td style=\"border: 2px solid black;\"><b>Hospital Name</b></td>';
+	tr.innerHTML = '<td style=\"border: 2px solid black;\"><b>Hospital Name</b></td>\
+	<td style=\"border: 2px solid black;\"><b>Pediatric</b></td>\
+	<td style=\"border: 2px solid black;\"><b>Religious</b></td>\
+	<td style=\"border: 2px solid black;\"><b>Urban</b></td>\
+	<td style=\"border: 2px solid black;\"><b>Bed Count</b></td>\
+	<td style=\"border: 2px solid black;\"><b>Zip Code</b></td>';
 	mainContainer.appendChild(tr);
 
+	// For loop to print each of the hospitals returned in the JSON response from the API
 	for (var i = 0; i < results.length; i++) {
 	  var tr = document.createElement("tr");
-	  tr.innerHTML = '<td style=\"border: 2px solid black;\">' + results[i].name + '</td>';
+	  tr.innerHTML = '<td style=\"border: 2px solid black;\">' + results[i].name + '</td>\
+	  <td style=\"border: 2px solid black;\">' + results[i].children_hospital_f + '</td>\
+	  <td style=\"border: 2px solid black;\">' + results[i].chrch_affl_f + '</td>\
+	  <td style=\"border: 2px solid black;\">' + results[i].urban_location_f + '</td>\
+	  <td style=\"border: 2px solid black;\">' + results[i].hospital_bed_count + '</td>\
+	  <td style=\"border: 2px solid black;\">' + results[i].zip_code + '</td>';
 	  tr.setAttribute('border', '2');
 	  mainContainer.appendChild(tr);
 	}
@@ -51,49 +54,55 @@ function printResults(results) {
 }
 
 
-
+// Function to handle submit event. Adapted code from https://simonplend.com/how-to-use-fetch-to-post-form-data-as-json-to-your-api/
 async function handleFormSubmit(event) {
-	/**
-	 * This prevents the default behaviour of the browser submitting
-	 * the form so that we can handle things instead.
-	 */
+
 	event.preventDefault();
 
-	/**
-	 * This gets the element which the event handler was attached to.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
-	 */
 	const form = event.currentTarget;
 
-	/**
-	 * This takes the API URL from the form's `action` attribute.
-	 */
 	const url = form.action;
 
 	try {
-		/**
-		 * This takes all the fields in the form and makes their values
-		 * available through a `FormData` instance.
-		 * 
-		 * @see https://developer.mozilla.org/en-US/docs/Web/API/FormData
-		 */
+
 		const formData = new FormData(form);
 
-		/**
-		 * We'll define the `postFormDataAsJson()` function in the next step.
-		 */
 		const responseData = await postFormData({ url, formData });
+
+		// Filter response data for pediatric status
 		if (formData.get('pedStatus') == 'Y'){
-			var result = responseData.filter(obj=> obj.children_hospital_f == "Y");
+			var resultPed = responseData.filter(obj=> obj.children_hospital_f == "Y");
 		} else {
-			var result = responseData.filter(obj=> obj.children_hospital_f == "N");
+			var resultPed = responseData.filter(obj=> obj.children_hospital_f == "N");
 		}
+		console.log({ resultPed });
+
+		// Filter response data for religious status
+		if (formData.get('relStatus') == 'Y'){
+			var resultRel = resultPed.filter(obj=> obj.chrch_affl_f == "Y");
+		} else {
+			var resultRel = resultPed.filter(obj=> obj.chrch_affl_f == "N");
+		}	
+		console.log({ resultRel });
 		
-		/**
-		 * Normally you'd want to do something with the response data,
-		 * but for this example we'll just log it to the console.
-		 */
+		// Filter response data for urban location status
+		if (formData.get('urbStatus') == 'Y'){
+			var resultUrb = resultRel.filter(obj=> obj.urban_location_f == "Y");
+		} else {
+			var resultUrb = resultRel.filter(obj=> obj.urban_location_f == "N");
+		}	
+		console.log({ resultUrb });
+
+		// Filter response data by bed count
+		if (formData.get('bedCount') == 'lessThanHundred'){
+			var result = resultUrb.filter(obj=> obj.hospital_bed_size == "<100 beds");
+		} else if (formData.get('bedCount') == 'hundredToTwoNinetyNine'){
+			var result = resultUrb.filter(obj=> obj.hospital_bed_size == "100-299 beds");
+		} else if (formData.get('bedCount') == 'threeHundredOrMore'){
+			var result = resultUrb.filter(obj=> obj.hospital_bed_size == ">299 beds");
+		} else {
+			var result = resultUrb.filter(obj=> obj.hospital_bed_size == '0')
+		}
 		console.log({ result });
 
 	} catch (error) {
@@ -104,5 +113,5 @@ async function handleFormSubmit(event) {
 
 	
 }
-    const stateForm = document.getElementById("state-form");
-    stateForm.addEventListener("submit", handleFormSubmit);
+const stateForm = document.getElementById("state-form");
+stateForm.addEventListener("submit", handleFormSubmit);
