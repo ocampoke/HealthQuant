@@ -165,6 +165,17 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
 }
+h2 {
+    margin-left: 170px;
+    text-align: left;
+    margin-top: 20px;
+    font-size: 16pt;
+}
+h3 {
+    margin-left: 200px;
+    text-align: left;
+    font-size: 8pt;
+}
 
 .data-row {
     background-color: pink;
@@ -297,14 +308,61 @@ table {
 #tooltip tr td{
     padding:0;
     margin:0;
-    width:100px;
+    width:180px;
     color:white;
 }
 #tooltip tr td:nth-child(1){
-    width:50px;
+    width:40px;
     color:white;
 }
 #tooltip tr td:nth-child(2){
+    width:30px;
     text-align:center;
     color:white;
+}
+  
+  .state-borders {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 0.5px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    pointer-events: none;
+  }
+
+  .background {
+    fill: none;
+    pointer-events: all;
+  }
+  
+  .feature {
+    fill: rgb(203, 198, 182);
+    cursor: pointer;
+  }
+  
+  .feature.active {
+    fill: rgb(0, 162, 255);
+  }
+  
+  .mesh {
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  div.tooltip2 {   
+    position: absolute;           
+   text-align: center;           
+   width: 250px;                  
+   height: 28px;                 
+   padding: 2px;             
+   font: 12px sans-serif;        
+   background: white;   
+   border: 0px;      
+   border-radius: 8px;           
+   pointer-events: none;         
+}
+path:hover {
+	fill-opacity: .7;
 }

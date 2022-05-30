@@ -20,7 +20,7 @@ app.get('/',function(req,res){
 });
 
 app.get('/locations',function(req,res){
-  res.render('locations.handlebars') 
+  res.render('locations.handlebars', {userDisease: JSON.stringify(req.query.disease), userStay: JSON.stringify(req.query.stay)}) 
 });
 
 app.get('/diseases',function(req,res){
@@ -35,8 +35,12 @@ app.get('/hospitals',function(req,res){
   res.render('hospitals.handlebars') 
 });
 
+app.get('/pediatrics',function(req,res){
+  res.render('pediatrics.handlebars') 
+});
+
 app.get('/showTreatments',function(req,res){
-  res.render('showTreatments.handlebars') 
+  res.render('showTreatments.handlebars', {userState: JSON.stringify(req.query.state)}) 
 });
 
 
