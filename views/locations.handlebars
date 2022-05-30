@@ -18,11 +18,28 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-	function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
+	function tooltipHtml(n, d, f){	/* function to create html content string in tooltip div. */
+			var userDisease2 = {{{userDisease}}};
+			var userStay2 = {{{userStay}}};
+			var x;
+			var name;
+		if(userDisease2 == "BA" && userStay2 == "Yes") {
+			x=f.ba;
+			name="Biliary Atresia";}
+		else if(userDisease2 == "BA" && userStay2 == "No") {
+			x=f.bas;
+			name="Biliary Atresia";}
+		else if(userDisease2 == "DF" && userStay2 == "Yes") {
+			x=f.df;
+			name="Dengue Fever";}
+		else if(userDisease2 == "DF" && userStay2 == "No") {
+			x=f.dfs;
+			name="Dengue Fever";}
 		return "<h4>"+n+"</h4><table>"+
-			"<tr><td>Low Cases</td><td>"+(d.low)+"</td></tr>"+
-			"<tr><td>Average Cases</td><td>"+(d.avg)+"</td></tr>"+
-			"<tr><td>High Cases</td><td>"+(d.high)+"</td></tr>"+
+			"<tr><td>Low Cases "+name+"</td><td>"+(d.low)+"</td></tr>"+
+			"<tr><td>Average Cases "+name+"</td><td>"+(d.avg)+"</td></tr>"+
+			"<tr><td>High Cases "+name+"</td><td>"+(d.high)+"</td></tr>"+
+			"<tr><td>Average Stay</td><td>"+(x)+"</td></tr>"+
 			"</table>";
 	}
 	
@@ -31,15 +48,28 @@
 	"ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
 	"MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
 	"CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
-	"WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+	"WI", "MO", "AR", "OK", "KS", "LA", "VA"]
 		.forEach(function(d){ 
 			var low=Math.round(100*Math.random()), 
 				mid=Math.round(100*Math.random()), 
 				high=Math.round(100*Math.random());
+			var userDisease2 = {{{userDisease}}};
+			var userStay2 = {{{userStay}}};
+		if(userDisease2 == "BA" && userStay2 == "Yes") {
 			sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
-					avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(low/100)}; 
+					avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(low/100)}; }
+		else if(userDisease2 == "BA" && userStay2 == "No") {
+			sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
+					avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(low/100)}; }
+		else if(userDisease2 == "DF" && userStay2 == "Yes") {
+			sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
+					avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(low/100)}; }
+		else if(userDisease2 == "DF" && userStay2 == "No") {
+			sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
+					avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(low/100)}; }
+
 		});
-	
+
 	/* draw states on id #statesvg */	
 	uStates.draw("#statesvg", sampleData, tooltipHtml);
 	
