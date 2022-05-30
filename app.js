@@ -10,7 +10,7 @@ const cors = require('cors');
 
 app.engine("handlebars", handlebars.engine);
 app.set("view engine", "handlebars");
-app.set("port", 3025);
+app.set("port", 3029);
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/js'));
 app.use(cors())
