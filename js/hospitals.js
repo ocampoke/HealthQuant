@@ -1,4 +1,5 @@
 // hospitals.js
+
 // Function to send query to the Community Benefit Insight API
 // Adapted code from https://simonplend.com/how-to-use-fetch-to-post-form-data-as-json-to-your-api/
 async function postFormData({ url, formData }) {
@@ -23,20 +24,28 @@ function clearContent(elementID) {
 }
 
 
-// Function to print search results to Hospital page. Adapted from https://howtocreateapps.com/fetch-and-display-json-html-javascript/
+// Function to print search results to Hospital page. Adapted from 
+// https://howtocreateapps.com/fetch-and-display-json-html-javascript/
 function printResults(results) {
-	// Clear contents of results page in the Hospitals page to allow the printing the results of new search queries
+	// Clear contents of results page in the Hospitals page to allow the printing the results of new 
+	// search queries
 	clearContent("results");
 	var mainContainer = document.getElementById("results");
 	var tr = document.createElement("tr");
-	tr.innerHTML = '<td style=\"border: 2px solid black;\"><b>Hospital Name</b></td>\
-	<td style=\"border: 2px solid black;\"><b>Pediatric</b></td>\
-	<td style=\"border: 2px solid black;\"><b>Religious</b></td>\
-	<td style=\"border: 2px solid black;\"><b>Urban</b></td>\
-	<td style=\"border: 2px solid black;\"><b>Bed Count</b></td>\
-	<td style=\"border: 2px solid black;\"><b>Zip Code</b></td>\
-	<td style=\"border: 2px solid black;\"><b>Street Address</b></td>';
-	mainContainer.appendChild(tr);
+
+	if (results.length > 0) {
+		tr.innerHTML = '<td style=\"border: 2px solid black;\"><b>Hospital Name</b></td>\
+		<td style=\"border: 2px solid black;\"><b>Pediatric</b></td>\
+		<td style=\"border: 2px solid black;\"><b>Religious</b></td>\
+		<td style=\"border: 2px solid black;\"><b>Urban</b></td>\
+		<td style=\"border: 2px solid black;\"><b>Bed Count</b></td>\
+		<td style=\"border: 2px solid black;\"><b>Zip Code</b></td>\
+		<td style=\"border: 2px solid black;\"><b>Street Address</b></td>';
+		mainContainer.appendChild(tr);
+	} else {
+		tr.innerHTML = '<td style=\"text-align: center;\">No hospitals matched the specified criteria</td>';
+		mainContainer.appendChild(tr);
+	}
 
 	// For loop to print each of the hospitals returned in the JSON response from the API
 	for (var i = 0; i < results.length; i++) {
@@ -56,7 +65,8 @@ function printResults(results) {
 }
 
 
-// Function to handle submit event. Adapted code from https://simonplend.com/how-to-use-fetch-to-post-form-data-as-json-to-your-api/
+// Function to handle submit event. Adapted code from 
+// https://simonplend.com/how-to-use-fetch-to-post-form-data-as-json-to-your-api/
 async function handleFormSubmit(event) {
 
 	event.preventDefault();

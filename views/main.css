@@ -4,6 +4,13 @@
     text-shadow: 2px 2px 3px black;
     padding-top: 10%;
   }
+
+#individual-content{
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 3px black;
+  padding-top: 0%;
+}
   
   body {
     background: lightgray;
@@ -76,6 +83,11 @@ div.settings input {
     font-size: 0.9rem;
     border-spacing: 20px;
 }
+
+img {
+    max-width: 50%;
+    height: auto;
+  }
 
 td, th {
     padding: 5px;
