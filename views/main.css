@@ -86,7 +86,12 @@ div.settings input {
 
 img {
     max-width: 50%;
-    height: auto;
+    height: 30%;
+}
+
+#title {
+    max-width:50% !important;
+    height: auto !important;
   }
 
 td, th {

@@ -13,20 +13,30 @@
 
 <body>
     <div class="container">
-            <div class="form-group">
-                <label for="Diseases">Diseases</label>
-                <select class="form-control" name="disease" id="disease">
-                    <option value="BA">Biliary Atresia</option>
-                    <option value="DF">Dengue Fever</option>
-                </select>
-                <label for="Diseases">Hospital Stay More than 14 Days</label>
-                <select class="form-control" name="stay" id="stay">
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
-         <input type="submit" class="btn btn-info" role="button">
-        </form>
+        <div id="individual-content">
+            <h1>Diseases</h1>
+            <img src="sicksmall.png">
+        </div>
+        <table class="search-form">
+            <tr>
+                <td>
+                    <form action="/locations" method="get">
+                        <div class="form-group">
+                            <label for="Diseases">Diseases</label>
+                            <select class="form-control" name="disease" id="disease">
+                                <option value="BA">Biliary Atresia</option>
+                                <option value="DF">Dengue Fever</option>
+                            </select>
+                            <label for="Diseases">Hospital Stay More than 14 Days</label>
+                            <select class="form-control" name="stay" id="stay">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                     <input type="submit" class="btn btn-info" role="button">
+                    </form>
+                </td>
+            </tr>
     </div>
 
 </body>
