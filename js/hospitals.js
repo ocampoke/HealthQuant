@@ -74,7 +74,15 @@ async function handleFormSubmit(event) {
 	const form = event.currentTarget;
 
 	const url = form.action;
+	
+	clearContent("results");
+	var mainContainer = document.getElementById("results");
+	
+	var tr = document.createElement("tr");
 
+	tr.innerHTML = '<td style=\"text-align: center\">Results may take a few moments to load.</td>';
+	mainContainer.appendChild(tr);
+	
 	try {
 
 		const formData = new FormData(form);
