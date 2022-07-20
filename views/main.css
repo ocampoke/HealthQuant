@@ -10,6 +10,7 @@
   color: white;
   text-shadow: 2px 2px 3px black;
   padding-top: 0%;
+  
 }
   
   body {
@@ -85,8 +86,9 @@ div.settings input {
 }
 
 img {
-    max-width: 50%;
-    height: 30%;
+    max-width: 30%;
+    height: auto;
+    width: auto\9; 
 }
 
 #title {
