@@ -1,7 +1,6 @@
 // hospitals.js
 
-// Function to send query to the Community Benefit Insight API
-// Adapted code from https://simonplend.com/how-to-use-fetch-to-post-form-data-as-json-to-your-api/
+// Function to send query to the Community Benefit Insight API.
 async function postFormData({ url, formData }) {
 	const plainFormData = Object.fromEntries(formData.entries());
     console.log(plainFormData);
@@ -24,8 +23,7 @@ function clearContent(elementID) {
 }
 
 
-// Function to print search results to Hospital page. Adapted from 
-// https://howtocreateapps.com/fetch-and-display-json-html-javascript/
+// Function to print search results to Hospital page. 
 function printResults(results) {
 	// Clear contents of results page in the Hospitals page to allow the printing the results of new 
 	// search queries
@@ -65,8 +63,7 @@ function printResults(results) {
 }
 
 
-// Function to handle submit event. Adapted code from 
-// https://simonplend.com/how-to-use-fetch-to-post-form-data-as-json-to-your-api/
+// Function to handle submit event. 
 async function handleFormSubmit(event) {
 
 	event.preventDefault();
