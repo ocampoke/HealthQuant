@@ -13,6 +13,8 @@ app.set("view engine", "handlebars");
 app.set("port", 3029);
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/js'));
+app.use(express.static(__dirname + '/img'));
+app.use(express.static(__dirname + '/css'));
 app.use(cors())
 
 app.get('/',function(req,res){
