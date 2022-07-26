@@ -1,7 +1,7 @@
 // App.js
 
 /*
-    SETUP
+    Express setup for Healthquant
 */
 var express = require("express");
 var app = express();
