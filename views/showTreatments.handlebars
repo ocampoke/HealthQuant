@@ -12,43 +12,43 @@
 </head>
 
 <body>
-<div id="tooltip"></div><!-- div to hold tooltip. -->
-<svg width="960" height="600" id="statesvg"></svg> <!-- svg to hold the map. -->
-<script src="uStates.js"></script> <!-- creates uStates. -->
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
+	<div id="tooltip"></div><!-- div to hold tooltip. -->
+	<svg width="960" height="600" id="statesvg"></svg> <!-- svg to hold the map. -->
+	<script src="uStates.js"></script> <!-- creates uStates. -->
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script>
 
-	
-	function tooltipHtml(n, d, f){	/* function to create html content string in tooltip div. */
-		return "<h4>"+n+"</h4><table>"+
-			"<tr><td>Procedures</td><td>"+(d.low)+"</td></tr>"+
-			"</table>";
-	}
-	
 
-	var sampleData2 ={};	/* Sample random data. */	
-	["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
-	"ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
-	"MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
-	"CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
-	"WI", "MO", "AR", "OK", "KS", "LA", "VA"]
-		.forEach(function(d){ 
-			var low=Math.round(100*Math.random()), 
-				mid=Math.round(100*Math.random()), 
-				high=Math.round(100*Math.random());
-			var userState2 = {{{userState}}};
-			if (d == userState2) {
-			sampleData2[d]={low:d3.min([low,mid,high]),  color:"#00FF00"}; 
-			}
-			else{
-			sampleData2[d]={low:d3.min([low,mid,high]),  color:d3.interpolate("#ffffcc", "#800026")(low/100)}; 
-			}
-		});
+		function tooltipHtml(n, d, f){	/* function to create html content string in tooltip div. */
+			return "<h4>"+n+"</h4><table>"+
+				"<tr><td>Procedures</td><td>"+(d.low)+"</td></tr>"+
+				"</table>";
+		}
 
-	/* draw states on id #statesvg */	
-	uStates.draw("#statesvg", sampleData2, tooltipHtml);
-	
-	d3.select(self.frameElement).style("height", "600px"); 
-</script>
+
+		var sampleData2 ={};	/* Sample random data. */	
+		["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+		"ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+		"MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+		"CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+		"WI", "MO", "AR", "OK", "KS", "LA", "VA"]
+			.forEach(function(d){ 
+				var low=Math.round(100*Math.random()), 
+					mid=Math.round(100*Math.random()), 
+					high=Math.round(100*Math.random());
+				var userState2 = {{{userState}}};
+				if (d == userState2) {
+				sampleData2[d]={low:d3.min([low,mid,high]),  color:"#00FF00"}; 
+				}
+				else{
+				sampleData2[d]={low:d3.min([low,mid,high]),  color:d3.interpolate("#ffffcc", "#800026")(low/100)}; 
+				}
+			});
+
+		/* draw states on id #statesvg */	
+		uStates.draw("#statesvg", sampleData2, tooltipHtml);
+
+		d3.select(self.frameElement).style("height", "600px"); 
+	</script>
 
 </body>
